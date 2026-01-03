@@ -116,12 +116,29 @@ while (playerLocation != 4):
         fromLocation = playerLocation
         toLocation = world[playerLocation][movement]
 
-        fromName = locationNames.get(fromLocation, "Hallway")
-        toName = locationNames.get(toLocation, "Hallway")
+        if toLocation == 4 and checkedOut == False:
+            print(f"\n\t\t\t\t\tGo to checkout otherwise leave items at exit")
+        else:
+            fromName = locationNames.get(fromLocation, "Hallway")
+            toName = locationNames.get(toLocation, "Hallway")
 
-        print(f"\n\t\t\t\t\tYou moved from {fromName} to {toName}")
+            print(f"\n\t\t\t\t\tYou moved from {fromName} to {toName}")
 
-        playerLocation = toLocation
+            playerLocation = toLocation
+
+        total = 0
+        if playerLocation == 3 and checkedOut == False:
+            for z in cart:
+                for i in storeItems:
+                    for j in storeItems[i]:
+                        if j == z:
+                            print(f"\n\t\t\t\t\t{j}: ${storeItems[i][j]}")
+                            total += storeItems[i][j]
+            print(f"\n\t\t\t\t\tCart Total: ${total}")
+
+            money -= total
+            checkedOut = True
+
     else:
         print("Sorry, please choose a different direction")
 
