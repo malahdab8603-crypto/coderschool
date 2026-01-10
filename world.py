@@ -101,7 +101,7 @@ money = 100
 cart = []
 checkedOut = False
 
-while (playerLocation != 4):
+while (playerLocation != 4 and checkedOut == False):
     print("\nYou are in the", locationNames.get(playerLocation, "Hallway"))
     print("You can go:")
 
@@ -139,10 +139,24 @@ while (playerLocation != 4):
             money -= total
             checkedOut = True
 
+            while playerLocation == 15:
+                print("You are at the Help Desk.")
+                print("Help Desk: What location would you like to go to?")
+                for key, value in locationNames.items():
+                    print(f"  {key}: {value}")
+                choice = int(input("Enter location number: "))
+
+                if choice not in locationNames:
+                    print("Choice not a location, please choose again") 
+                    continue
+                else:
+                    playerLocation = choice
+                    break
+
     else:
         print("Sorry, please choose a different direction")
 
-    print()
+    print()   
 
     if playerLocation in storeItems:
         print("Items for sale:")

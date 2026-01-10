@@ -209,6 +209,7 @@ npcs = {
             "I know this store like the back of my hand!",
             "Need directions? That's what I'm here for!",
             "Don't be shy, ask me anything!"
+            "My Nigga where are you going?"
         ]
     },
     6: {  # Entrance
